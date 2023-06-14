@@ -1,12 +1,12 @@
 #include "../inc/adc.h"
 #include <avr/io.h>
-#include <avr/iotn85.h>
+#include <avr/iotn84.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
 void adc_init() {
-    // prescale clock by div factor 64 and enable adc
-    ADCSRA |= (1<<ADPS2) | (1<<ADPS1) | (1<<ADPS0) | (1<<ADEN);
+    // prescale clock by div factor 8 and enable adc
+    ADCSRA |= (1<<ADPS1) | (1<<ADPS0) | (1<<ADEN);
 
     sei();
 }
@@ -17,13 +17,13 @@ int _adc_read(ADC_Input adc_input) {
     // set the adc channel
     ADMUX |= adc_input;
     // start conversion
-    ADCSRA |=  (1<< ADIE);
+    ADCSRA |=  (1 << ADIE);
     // while conversion not complete
     adc_sleep();
     // store low register first
     int result = ADCL;
     // or the result with the high register shifted 8 bits
-    result |= (ADCH<< 8);
+    result |= (ADCH << 8);
 
     return result;
 }

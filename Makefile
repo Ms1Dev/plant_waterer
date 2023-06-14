@@ -1,9 +1,9 @@
 MAIN_FILE = src/main
-DEVICE = attiny85
+DEVICE = attiny84
 PROGRAMMER = USBasp
 CC = avr-gcc
 CFLAGS = -Wall -I inc -Os -mmcu=$(DEVICE)
-FUSES = -U lfuse:w:0xE2:m -U hfuse:w:0xdf:m -U efuse:w:0xff:m
+FUSES = -U lfuse:w:0x5f:m -U hfuse:w:0xdf:m -U efuse:w:0xff:m 
 
 default: install size clean
 

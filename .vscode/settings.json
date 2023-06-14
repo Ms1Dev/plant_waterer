@@ -3,6 +3,9 @@
         "adc.h": "c",
         "stdint.h": "c",
         "potentiometer.h": "c",
-        "interrupt.h": "c"
+        "interrupt.h": "c",
+        "iotn84.h": "c",
+        "ctrl.h": "c",
+        "delay.h": "c"
     }
 }
