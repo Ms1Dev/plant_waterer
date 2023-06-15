@@ -11,8 +11,27 @@ typedef enum {
     ADC4 = 0b000100
 } ADC_Input;
 
+/**
+ * Configure ADC control register for operation
+*/
 void adc_init();
-uint8_t adc_read_prcnt(ADC_Input);
+
+/**
+ * Gets the digital result from the given ADC input and converts to a percentage
+ * Returns result from ADC as a percentage
+*/
+uint8_t adc_read_prcnt(ADC_Input adc_input);
+
+/**
+ * Gets the digital result from the given ADC input and maps it to the upper and lower parameters
+ * Returns the mapped result as a percentage
+*/
+uint8_t mapped_adc_prcnt(ADC_Input adc_input ,int upper, int lower);
+
+/**
+ * Puts the MCU into ADC noise reduction sleep mode
+*/
 void adc_sleep();
 
-#endif
+
+#endif //ADC_H

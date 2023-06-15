@@ -1,18 +1,11 @@
-#define F_CPU 1000000L
-
-#include <util/delay.h>
-#include <avr/io.h>
-#include <avr/iotn84.h>
-#include <avr/interrupt.h>
-#include "../inc/adc.h"
+#define F_CPU 1000000UL
 #include "../inc/ctrl.h"
 
 
 int main (void) 
 {
     ctrl_init();
-    adc_init();
-
+    
     while(1) {
         if (hasMinWater()) {
             setLimits();
@@ -29,6 +22,7 @@ int main (void)
             runPump(false);
             flashLed();
         }
+        ctrlPump();
         sleep();
     }
     
